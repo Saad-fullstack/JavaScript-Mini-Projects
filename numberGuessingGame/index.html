@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Number Guessing Game</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <nav>
+        <a href="/index.html" aria-current="page">Home</a>
+    </nav>
+
+    <main class="page-wrapper">
+        <section class="game-container" id="game-container">
+            <h1 class="game-title">Number Guessing Game</h1>
+            <p class="game-description">
+                Try to guess the secret number between 1 and 100.<br />
+                You have 10 attempts to find the correct number.
+            </p>
+            <div class="game-columns">
+                <section class="instructions" id="instructions">
+                    <h2 class="instructions-title">How to Play</h2>
+                    <ul class="instructions-list">
+                        <li>The computer will choose a random number between 1 and 100.</li>
+                        <li>Enter your guess in the input field.</li>
+                        <li>Click the Guess button.</li>
+                        <li>If your guess is too high, you will see a message.</li>
+                        <li>If your guess is too low, you will see a message.</li>
+                        <li>If your guess is correct, you win.</li>
+                        <li>You have only 10 attempts.</li>
+                        <li>After the game ends, you can start a new game.</li>
+                    </ul>
+                </section>
+
+                <section class="game-panel" id="game-panel">
+
+                    <!-- Guess Input Section -->
+                    <div class="guess-section">
+                        <label for="guess-input" class="guess-label">Enter Your Guess</label>
+                        <input type="number" id="guess-input" class="guess-input" placeholder="Enter a number" />
+
+                        <!-- Submit Guess Button -->
+                        <button id="submit-btn" class="btn submit-btn">Submit Guess</button>
+                    </div>
+
+                    <div class="result-section" id="result-section">
+
+                        <!-- Result message -->
+                        <p class="result-line">
+                            Result: <span id="result-message"></span>
+                        </p>
+
+                        <!-- Previous guesses made by the player -->
+                        <p class="result-line">
+                            Previous Guesses: <span id="previous-guesses"></span>
+                        </p>
+
+                        <!-- Number of attempts remaining -->
+                        <p class="result-line">
+                            Attempts Left: <span id="attempts-left">10</span>
+                        </p>
+
+                    </div>
+
+                    <button id="new-game-btn" class="btn new-game-btn">Start New Game</button>
+
+                </section>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

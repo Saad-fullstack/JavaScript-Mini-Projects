@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="../colorChanger/style.css">
+</head>
+
+<body>
+    <nav>
+        <a href="/index.html" aria-current="page">Home</a>
+    </nav>
+
+    <div class="container">
+        <div class="app-shell">
+
+            <!-- ================= START SCREEN ================= -->
+            <section id="startScreen" class="screen start-screen active">
+                <div class="glass-card start-card">
+
+                    <p class="eyebrow">Quiz App</p>
+                    <h1 class="hero-title">
+                        Ready to test your <span class="gradient-text">knowledge?</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Answer a series of questions, track your progress live, and see a full
+                        breakdown of your results at the end.
+                    </p>
+
+                    <ul class="instructions">
+                        <li class="instruction-item">
+                            <span class="instruction-icon">⏱</span>
+                            <span>Each question is timed — keep an eye on the clock.</span>
+                        </li>
+                        <li class="instruction-item">
+                            <span class="instruction-icon">◀▶</span>
+                            <span>Use Previous / Next to move freely between questions.</span>
+                        </li>
+                        <li class="instruction-item">
+                            <span class="instruction-icon">✓</span>
+                            <span>Review every answer, right or wrong, once you finish.</span>
+                        </li>
+                        <li class="instruction-item">
+                            <span class="instruction-icon">↻</span>
+                            <span>Restart anytime to try and beat your score.</span>
+                        </li>
+                    </ul>
+
+                    <button type="button" id="startBtn" class="btn btn-primary btn-lg">
+                        <span>Start Quiz</span>
+                    </button>
+
+                </div>
+            </section>
+
+            <!-- ================= QUIZ SCREEN ================= -->
+            <section id="quizScreen" class="screen quiz-screen">
+                <div class="glass-card quiz-card">
+
+                    <!-- Dashboard strip: question counter + timer -->
+                    <div class="quiz-dashboard">
+                        <div class="dash-card">
+                            <span class="dash-label">Question</span>
+                            <span id="questionNumber" class="dash-value">1 / 10</span>
+                        </div>
+
+                        <div class="timer" id="timer" role="timer" aria-label="Time remaining">
+                            <span class="timer-value">30</span>
+                        </div>
+                    </div>
+
+                    <!-- Progress bar -->
+                    <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100"
+                        aria-valuenow="10">
+                        <div id="progress" class="progress-fill"></div>
+                    </div>
+
+                    <!-- Question -->
+                    <div class="question-card">
+                        <h2 id="question" class="question-text">
+                            Question text will be inserted here by JavaScript.
+                        </h2>
+                    </div>
+
+                    <!-- Options (populated by JavaScript) -->
+                    <div id="options" class="options" aria-label="Answer options">
+                        <!-- Example of the button JavaScript can generate — remove/ignore in JS,
+               kept here only so the CSS below has something to style during preview.
+          <button type="button" class="option-btn">Option text</button>
+          -->
+                    </div>
+
+                    <!-- Navigation -->
+                    <div class="quiz-nav">
+                        <button type="button" id="prevBtn" class="btn btn-ghost">
+                            <span>Previous</span>
+                        </button>
+                        <button type="button" id="nextBtn" class="btn btn-primary">
+                            <span>Next</span>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ================= RESULT SCREEN ================= -->
+            <section id="resultScreen" class="screen result-screen">
+                <div class="glass-card result-card">
+
+                    <h2 class="eyebrow">Quiz Complete</h2>
+                    <h2 class="hero-title result-heading">
+                        Congratulations, <span class="gradient-text">nice work!</span>
+                    </h2>
+
+                    <!-- Result Box: statistics card -->
+                    <div class="stats-grid">
+                        <div class="stat-card stat-score">
+                            <span class="stat-label">Score</span>
+                            <span id="score" class="stat-value">0 / 10</span>
+                        </div>
+
+                        <div class="stat-card stat-correct">
+                            <span class="stat-label">Correct</span>
+                            <span id="correct" class="stat-value">0</span>
+                        </div>
+
+                        <div class="stat-card stat-wrong">
+                            <span class="stat-label">Wrong</span>
+                            <span id="wrong" class="stat-value">0</span>
+                        </div>
+
+                        <div class="stat-card stat-unanswered">
+                            <span class="stat-label">Unanswered</span>
+                            <span id="unanswered" class="stat-value">0</span>
+                        </div>
+
+                        <div class="stat-card stat-percentage">
+                            <span class="stat-label">Percentage</span>
+                            <span id="percentage" class="stat-value">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Review section (populated by JavaScript) -->
+                    <div class="review-section">
+                        <h3 class="review-heading">Answer Review</h3>
+                        <div id="review" class="review-list" aria-label="Answer review">
+                            <!-- Example review item for CSS preview only — JavaScript will
+                 generate real items and can remove this comment block.
+            <div class="review-item">
+              <p class="review-question">1. Sample question?</p>
+              <p class="review-answer is-correct">Your answer: Correct option</p>
+            </div>
+            -->
+                        </div>
+                    </div>
+
+                    <button type="button" id="restartBtn" class="btn btn-primary btn-lg">
+                        <span>Restart Quiz</span>
+                    </button>
+
+                </div>
+            </section>
+
+        </div>
+    </div>
+
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>

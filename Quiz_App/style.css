@@ -1,0 +1,570 @@
+/* ==========================================================================
+   QUIZ APP — SIMPLE STYLES
+   Clean light theme. Same structure/IDs as before, just simplified:
+   no animated background, no glass/blur effects, no glow/pulse animations.
+   Fonts: Space Grotesk (headings) + Inter (body).
+   ========================================================================== */
+
+/* ---------- Tokens ---------- */
+:root {
+    --primary: #6366F1;
+    --secondary: #8B5CF6;
+    --accent: #06B6D4;
+    --success: #22C55E;
+    --warning: #F59E0B;
+    --danger: #EF4444;
+
+    --bg: #F5F6FA;
+    --card-bg: #FFFFFF;
+    --border: #E5E7EB;
+
+    --text-primary: #1E1B2E;
+    --text-muted: #6B7280;
+
+    --font-display: "Space Grotesk", "Inter", sans-serif;
+    --font-body: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+
+    --radius-lg: 18px;
+    --radius-md: 12px;
+    --radius-sm: 8px;
+
+    --shadow-card: 0 10px 30px -12px rgba(30, 27, 46, 0.12);
+    --shadow-btn: 0 6px 16px -6px rgba(99, 102, 241, 0.4);
+
+    --ease: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ---------- Reset ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    height: 100%;
+}
+
+.container {
+    min-height: 100vh;
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(16px, 4vw, 48px);
+}
+
+/* ---------- Selection ---------- */
+::selection {
+    background: var(--primary);
+    color: #fff;
+}
+
+/* ---------- Focus ---------- */
+button:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 3px;
+    border-radius: var(--radius-sm);
+}
+
+button {
+    font-family: inherit;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+/* ==========================================================================
+   LAYOUT / SCREENS
+   ========================================================================== */
+
+.app-shell {
+    width: 100%;
+    max-width: 620px;
+}
+
+.screen {
+    display: none;
+}
+
+.screen.active {
+    display: block;
+}
+
+/* ---------- Card ---------- */
+.glass-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-card);
+    padding: clamp(24px, 5vw, 40px);
+}
+
+/* ==========================================================================
+   TYPOGRAPHY
+   ========================================================================== */
+
+.eyebrow {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--primary);
+    margin-bottom: 10px;
+}
+
+.hero-title {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: clamp(1.7rem, 5vw, 2.3rem);
+    line-height: 1.25;
+    margin-bottom: 12px;
+}
+
+.gradient-text {
+    color: var(--primary);
+}
+
+.hero-subtitle {
+    color: var(--text-muted);
+    font-size: clamp(0.92rem, 2vw, 1rem);
+    line-height: 1.6;
+    max-width: 46ch;
+    margin-bottom: 26px;
+}
+
+/* ==========================================================================
+   START SCREEN
+   ========================================================================== */
+
+.instructions {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 28px;
+}
+
+.instruction-item {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 14px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    transition: background var(--ease) 0.2s;
+}
+
+.instruction-item:hover {
+    background: #EEF0FF;
+    color: var(--text-primary);
+}
+
+.instruction-icon {
+    flex: 0 0 auto;
+    width: 30px;
+    height: 30px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    font-size: 0.85rem;
+}
+
+/* ==========================================================================
+   BUTTONS
+   ========================================================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 26px;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    font-size: 0.96rem;
+    transition: transform 0.15s var(--ease), box-shadow 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.btn-lg {
+    padding: 16px 32px;
+    font-size: 1.02rem;
+    width: 100%;
+}
+
+.btn-primary {
+    color: #fff;
+    background: var(--primary);
+    box-shadow: var(--shadow-btn);
+}
+
+.btn-primary:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+}
+
+.btn-primary:active {
+    transform: translateY(0) scale(0.98);
+}
+
+.btn-ghost {
+    color: var(--text-primary);
+    background: var(--bg);
+    border: 1px solid var(--border);
+}
+
+.btn-ghost:hover {
+    background: #EEF0FF;
+    border-color: var(--primary);
+}
+
+.btn-ghost:active {
+    transform: scale(0.98);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* ==========================================================================
+   QUIZ SCREEN
+   ========================================================================== */
+
+.quiz-dashboard {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 20px;
+}
+
+.dash-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 10px 18px;
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.dash-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.dash-value {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+/* ---------- Timer: simple circular badge ---------- */
+.timer {
+    flex: 0 0 auto;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    border: 2px solid var(--primary);
+}
+
+.timer-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--primary);
+}
+
+/* Low-time state — JavaScript can toggle this class later */
+.timer.is-urgent {
+    border-color: var(--danger);
+}
+
+.timer.is-urgent .timer-value {
+    color: var(--danger);
+}
+
+/* ---------- Progress bar ---------- */
+.progress-track {
+    width: 100%;
+    height: 10px;
+    border-radius: 999px;
+    background: var(--border);
+    overflow: hidden;
+    margin-bottom: 26px;
+}
+
+.progress-fill {
+    /* Width set later via JavaScript, e.g. style.width = '40%' */
+    height: 100%;
+    width: 10%;
+    border-radius: 999px;
+    background: var(--primary);
+    transition: width 0.4s var(--ease);
+}
+
+/* ---------- Question ---------- */
+.question-card {
+    background: var(--bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: clamp(20px, 4vw, 28px);
+    margin-bottom: 22px;
+}
+
+.question-text {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.1rem, 3vw, 1.35rem);
+    line-height: 1.4;
+}
+
+/* ---------- Options (buttons generated by JS) ---------- */
+.options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 26px;
+}
+
+.options .option-btn {
+    width: 100%;
+    text-align: left;
+    padding: 14px 18px;
+    border-radius: var(--radius-md);
+    background: var(--card-bg);
+    border: 1.5px solid var(--border);
+    color: var(--text-primary);
+    font-size: 0.96rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: border-color 0.2s var(--ease), background 0.2s var(--ease);
+}
+
+.options .option-btn:hover {
+    background: #EEF0FF;
+    border-color: var(--primary);
+}
+
+.options .option-btn:active {
+    transform: scale(0.99);
+}
+
+.options .option-btn:focus-visible {
+    outline: 2px solid var(--primary);
+    outline-offset: 2px;
+}
+
+.options.selected {
+    background: #28a745;
+    color: white;
+    border-color: #28a745;
+}
+
+/* Reserved states for JavaScript, e.g. classList.add('is-correct') */
+.options .option-btn.is-correct {
+    border-color: var(--success);
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.options .option-btn.is-wrong {
+    border-color: var(--danger);
+    background: rgba(239, 68, 68, 0.1);
+}
+
+.options .option-btn.is-disabled,
+.options .option-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* ---------- Navigation ---------- */
+.quiz-nav {
+    display: flex;
+    gap: 12px;
+}
+
+.quiz-nav .btn {
+    flex: 1 1 0;
+}
+
+/* ==========================================================================
+   RESULT SCREEN
+   ========================================================================== */
+
+.result-heading {
+    margin-bottom: 22px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 28px;
+}
+
+.stat-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 16px 18px;
+    border-radius: var(--radius-md);
+    background: var(--bg);
+    border: 1px solid var(--border);
+}
+
+.stat-score {
+    grid-column: 1 / -1;
+    background: #EEF0FF;
+    border-color: var(--primary);
+}
+
+.stat-score .stat-value {
+    font-size: clamp(1.6rem, 5vw, 2rem);
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.stat-value {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 1.3rem;
+}
+
+.stat-correct .stat-value {
+    color: var(--success);
+}
+
+.stat-wrong .stat-value {
+    color: var(--danger);
+}
+
+.stat-unanswered .stat-value {
+    color: var(--warning);
+}
+
+.stat-percentage .stat-value {
+    color: var(--accent);
+}
+
+/* ---------- Review section ---------- */
+.review-section {
+    margin-bottom: 28px;
+}
+
+.review-heading {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.review-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-height: 320px;
+    overflow-y: auto;
+    padding-right: 4px;
+}
+
+/* Styling for review items JavaScript will generate */
+.review-list .review-item {
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 14px 16px;
+    background: var(--bg);
+}
+
+.review-list .review-question {
+    font-weight: 600;
+    margin-bottom: 6px;
+}
+
+.review-list .review-answer {
+    font-size: 0.88rem;
+    color: var(--text-muted);
+}
+
+.review-list .review-answer span.is-correct {
+    color: var(--success);
+}
+
+.review-list .review-answer span.is-wrong {
+    color: var(--danger);
+}
+
+/* Empty state, for when there is nothing to review yet */
+.review-list:empty::before {
+    content: "Your answer review will appear here.";
+    display: block;
+    text-align: center;
+    padding: 24px 16px;
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    border: 1px dashed var(--border);
+    border-radius: var(--radius-md);
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+
+@media (max-width: 560px) {
+    .glass-card {
+        padding: 22px;
+    }
+
+    .quiz-nav {
+        flex-direction: column;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .stat-score {
+        grid-column: auto;
+    }
+
+    .quiz-dashboard {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 380px) {
+    .instruction-item {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .timer {
+        width: 52px;
+        height: 52px;
+    }
+}
